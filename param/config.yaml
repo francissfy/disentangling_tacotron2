@@ -1,0 +1,68 @@
+DENTG:
+  tmp: 1
+
+###########################################
+# reserved
+###########################################
+UTILS:
+  RANDOM_SEED: 12
+  UTILS_TEXT_CLEANERS: ["english_cleaners"]
+  UTILS_MAX_WAV_VALUE: 32768.0
+
+###########################################
+# experimental
+###########################################
+EXPERIMENT:
+  SEED: 1234
+
+###########################################
+# audio params
+###########################################
+AUDIO:
+  MAX_WAV_VALUE: 32768.0
+  SAMPLING_RATE: 22050
+  FILTER_LENGTH: 1024
+  HOP_LENGTH: 256
+  WIN_LENGTH: 1024
+  N_MEL_CHANNELS: 80
+  MEL_FMIN: 0.0
+  MEL_FMAX: 8000.0
+
+###########################################
+# data util params
+###########################################
+DATA:
+  LOAD_MEL_FROM_DISK: false
+
+###########################################
+# tacotron2 model params
+###########################################
+TCTRN:
+  OTHER:
+    MASK_PADDING: false
+    N_SYMBOLS: -1
+    SYMBOLS_EMBD_DIM: 512
+  ENCODER:
+    NUM_CONV: 3
+    EMBD_DIM: 512
+    KERNEL_SIZE: 3
+  DECODER:
+    # decoder
+    N_FRAMES_PER_STEP: 12
+    RNN_DIM: 128
+    # decoder attention
+    ATTENTION_DIM: 128
+    ATTENTION_RNN_DIM: 1024
+    # decoder location
+    LOCATION_INNER_DIM: 128
+    LOCATION_KERNEL_SIZE: 3
+    MAX_STEPS: 42
+    # prenet
+    PRENET_DIM: 12
+    GATE_THRESHOLD: 0.5
+    ATTENTION_DROPOUT: 0.5
+    DROPOUT: 0.5
+    # postnet
+    POSTNET_EMBD_DIM: 512
+    POSTNET_KERNEL_SIZE: 5
+    POSTNET_N_CONV: 5
