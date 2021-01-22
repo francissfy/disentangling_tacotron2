@@ -44,7 +44,7 @@ class TextMelLoader(torch.utils.data.Dataset):
     def __init__(self, audio_text_file: str, cfg):
         # TODO type of audiopath_text
         self.audiopath_text: List[List[str]] = load_audiopath_text(audio_text_file)
-        self.text_cleaners: List[str] = cfg["UTILS"]["UTILS_TEXT_CLEANERS"]
+        self.text_cleaners: List[str] = cfg["DATA"]["TEXT_CLEANERS"]
         self.max_wav_value: float = cfg["AUDIO"]["MAX_WAV_VALUE"]
         self.sampling_rate: float = cfg["AUDIO"]["SAMPLING_RATE"]
         self.load_mel_from_disk = cfg["DATA"]["LOAD_MEL_FROM_DISK"]

@@ -1,19 +1,31 @@
-DENTG:
-  tmp: 1
-
 ###########################################
-# reserved
+# disentangling params
 ###########################################
-UTILS:
-  RANDOM_SEED: 12
-  UTILS_TEXT_CLEANERS: ["english_cleaners"]
-  UTILS_MAX_WAV_VALUE: 32768.0
+DISENTANGLING:
+  PLACE_HOLDER: "NONE"
 
 ###########################################
 # experimental
 ###########################################
 EXPERIMENT:
   SEED: 1234
+  DISTRIBUTED_RUN: false
+  DIST_BACKEND: "nccl"
+  DIST_URL: "tcp://localhost:54321"
+  FP_16RUN: false
+  IGNORE_LAYERS: ["embedding.weight"]
+  USE_SAVED_LEARNING_RATE: false
+  EPOCH: 500
+  ITERS_PER_CHECKPOINT: 1000
+
+###########################################
+# optimization
+###########################################
+OPT:
+  LEARNING_RATE: 0.001
+  WEIGHT_DECAY: 0.000001
+  BATCH_SIZE: 64
+  GRAD_CLIP_THRESH: 1.0
 
 ###########################################
 # audio params
@@ -33,6 +45,9 @@ AUDIO:
 ###########################################
 DATA:
   LOAD_MEL_FROM_DISK: false
+  TRAINING_FILES: ""
+  VALIDATION_FILES: ""
+  TEXT_CLEANERS: ["english_cleaners"]
 
 ###########################################
 # tacotron2 model params
@@ -66,3 +81,15 @@ TCTRN:
     POSTNET_EMBD_DIM: 512
     POSTNET_KERNEL_SIZE: 5
     POSTNET_N_CONV: 5
+
+###########################################
+# train params
+###########################################
+TRAIN:
+  OUTPUT_DIR: ""
+  LOG_DIR: ""
+  CHECKPOINT_PATH: ""
+  WARM_START: false
+  N_GPUS: 1
+  RANK: 0
+  GROUP_NAME: ""
